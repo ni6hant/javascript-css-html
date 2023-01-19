@@ -1,0 +1,75 @@
+/*The following code selects all of our elements including our before and after elements*/
+*, *::before, *::after{
+	box-sizing: border-box;
+	/*Times New Roman is the first found to be used but the second argument selects sans-serif if the the default font is not found*/
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: bold;
+}
+
+/*Apply Background*/
+body{
+	/*We remove padding and margin so that our background fills our entire screen*/
+	padding: 0;
+	margin: 0;
+	background-image: url("https://image.freepik.com/free-vector/diwali-indian-mandala-purple-background_53876-117338.jpg")
+	/*Q. Why does chosing the gradient to the top makes the colors banded?*/
+}
+
+/*Change the styles for the calculator grid class*/
+.calculator-grid {
+	display: grid;
+	justify-content: center;
+	align-content: center; /*We want to align the entire content of this grid*/
+	/*Our calculator at this point is not centered vertically and to fix that, we have done the following*/
+	min-height: 100vh; /*Here 100vh means 100 Percent of the View. Q. Don't know what that h means though*/
+	/*The following will make the buttons looks more fancy*/
+	grid-template-columns: repeat(4, 100px); /*We have 4 repeating columsn with 100px width of the column*/
+	grid-template-rows: minmax(120px, auto) repeat(5, 100px); /*The first row is the output and it needs to grow to fit as much number as we need hence we use the minmax to define the same. Auto simply means to fit the value*/
+}
+
+/*Properly Position out buttons*/
+.calculator-grid > button {
+	cursor: pointer; /*So that the mouse cursor changes to cursor if you hover over them*/
+	font-size: 2rem; /*Q. What is rem?*/
+	border: 2px solid white; /*2 px solid white border outside our elements*/
+	outline: none; /*Browsers put in outline by default and we don't actually want it*/
+	background-color: rgba(255,255,255,.75); /*RGBA's last element is the fractional value of the opaqueness*/
+}
+
+/*Change color of the button on hover*/
+.calculator-grid > button:hover {
+	background-color: rgba(255,255,255,1.00)
+}
+
+/*Make the span two classes to span to two columns*/
+.span-two {
+	grid-column: span 2;
+}
+
+/*Style our whole output element as a whole*/
+.output{
+	/*Make the output and the previous operand fit the whole width*/
+	grid-column: 1 / -1; /*-1 means the last column*/
+	background-color: rgba(0,0,0,.75);
+	/*Align the elements in our container*/
+	display: flex;
+	align-items: flex-end; /*We want this to be on the right side of the container*/
+	justify-content: space-around; /*It wil push our outputs closer to each other and away from the boundaries*/
+	flex-direction: column; /*So that the outputs line up vertically*/
+	padding: 10px;
+
+	word-wrap: break-word; /*So that we can break word in the middle and just at the end*/ 
+	word-break: break-all; /*We want to break all words*/
+}
+
+/*Style our previous operand*/
+.output .previous-operand {
+	color: rgba(255,255,255,.75);
+	font-size: 1.5rem;
+}
+
+/*Style our current operand*/
+.output .current-operand {
+	color: white;
+	font-size: 2.5rem;
+}

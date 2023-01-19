@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="style.css" rel="stylesheet">
+    <!--defer below allows the JavaScript to load only after the whole page is loaded.-->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!--The calculator elements being added here as individual elements-->
+    <div class="calculator-grid">
+        <!--Output Screen-->
+        <div class="output">
+            
+            <div data-previous-operand class="previous-operand">
+                <!--The calculation window that show the previous calculation and lies above-->
+            </div>
+
+            <div data-current-operand class="current-operand">
+                <!--The main window that displays all the calculations-->
+            </div>
+        </div>
+        <!--All the buttons for the calculator-->
+        <!--Since the "AC" and the "=" button take twice as much space as the other buttons they have a different class-->
+        <button data-all-clear class="span-two">AC</button>
+        <button data-delete>DEL</button>
+        <!--The reason we are using data attributes and not classes so it's easier to what classes belong to CSS and what belongs to the JavaScript-->
+        <!--Along with the advantage that we can select one group together-->
+        <button data-operation>/</button>
+        <!--Since we are using grid, we don't need any special function to move to the next row-->
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-operation>*</button>
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-operation>+</button>
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button data-operation>-</button>
+        <button data-number>.</button> <!--The decimal point is considered as a number for the focus of our calculator-->
+        <button data-number>0</button>
+        <button data-equals class="span-two">=</button>
+    </div>
+</body>
+</html>
