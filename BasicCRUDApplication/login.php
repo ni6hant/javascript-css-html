@@ -24,14 +24,14 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
     } elseif (strpos($_POST['email'], "@") !== false) {
         $check = hash('md5', $salt . $_POST['pass']);
         if ($check != $stored_hash) {
-            $_SESSION['error'] = "Incorrect Password";
             error_log("Login fail " . $_POST['email'] . " $check");
-            echo "Incorrect password";
+            $_SESSION['error'] = "Incorrect Password";
+            header("Location: login.php");
+            return;
         } else {
             error_log("Login success " . $_POST['email']);
             $_SESSION['name'] = $_POST['email'];
-            echo $_SESSION['name'];
-            header("Location: view.php");
+            header("Location: index.php");
             return;
         }
     } else {
