@@ -119,7 +119,7 @@ if ((isset($_POST['mileage'])) && (isset($_POST['year']))) {
         <h2>Automobiles</h2>
         <?php
         error_log("In Add.PHP: Trying to run the query to populate the table");
-        $stmt2 = $pdo->query("SELECT year, make, mileage FROM autos");
+        $stmt2 = $pdo->query("SELECT make, model, year, mileage FROM autos");
         $rows = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         if ($rows === false) {
             error_log("Add.PHP: No rows returned" . $rows);
@@ -129,9 +129,11 @@ if ((isset($_POST['mileage'])) && (isset($_POST['year']))) {
         }
         foreach ($rows as $row) {
             echo "<ul><li>";
-            echo htmlentities($row['year']);
-            echo " ";
             echo htmlentities($row['make']);
+            echo " ";
+            echo htmlentities($row['model']);
+            echo " ";
+            echo htmlentities($row['year']);
             echo " ";
             echo htmlentities($row['mileage']);
             echo " / 100";

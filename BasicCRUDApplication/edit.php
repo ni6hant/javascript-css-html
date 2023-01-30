@@ -45,30 +45,7 @@ if (isset($_POST['mileage']) && isset($_POST['model']) && isset($_POST['year']) 
             return;
         } else {
             error_log("In Edit.PHP: All values are entered proceeding to update value in database");
-
-            //TODO: Clean once test is complete
-            // error_log("In Edit.php: ");
-            //  if (!(is_numeric($_POST['mileage']) && is_numeric($_POST['year']))) {
-            //     error_log("In Edit.php: ");
-            //     $_SESSION['error'] = "Mileage and year must be numeric";
-            //      header("Location: edit.php?auto_id=".$_GET['auto_id']);
-            //      return;
-            // }
-
-            // if (strlen($_POST['make']) < 1) {
-            //     error_log("In Edit.php: ");
-            //     $_SESSION['error'] = "Make is required";
-            //     header("Location: edit.php?auto_id=".$_GET['auto_id']);
-            //     return;
-            // }
-
-            // if (strlen($_POST['model']) < 1) {
-            //     error_log("In Edit.php: ");
-            //     $_SESSION['error'] = "Model is required";
-            //     header("Location: edit.php?auto_id=".$_GET['auto_id']);
-            //     return;
-            // } 
-
+            
             $sql = "UPDATE autos SET make = :make, model =:model, year = :year, mileage = :mileage WHERE auto_id = :auto_id";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(
